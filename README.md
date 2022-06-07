@@ -46,29 +46,17 @@ git clone https://github.com/Timm-png/neovim-dotfiles/ ~/.config/nvim
 
 https://github.com/LunarVim/Neovim-from-scratch
 
-https://github.com/williamboman/nvim-lsp-installer
-
-https://github.com/neovim/nvim-lspconfig
-
 https://github.com/onsails/lspkind.nvim
 
 https://github.com/tami5/lspsaga.nvim
 
 https://github.com/hrsh7th/cmp-git
 
-https://github.com/hrsh7th/cmp-nvim-lsp
-
 https://github.com/hrsh7th/nvim-kit
 
 https://github.com/folke/trouble.nvim
 
 https://gitlab.com/yorickpeterse/nvim-window
-
-https://github.com/lukas-reineke/lsp-format.nvim
-
-https://github.com/windwp/nvim-autopairs
-
-https://github.com/nvim-telescope/telescope.nvim
 
 https://github.com/rstacruz/vim-closer
 
