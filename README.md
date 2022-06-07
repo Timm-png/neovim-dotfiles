@@ -67,3 +67,11 @@ https://github.com/lewis6991/gitsigns.nvim
 https://github.com/mfussenegger/nvim-dap
 
 https://github.com/rcarriga/nvim-dap-ui
+
+https://github.com/phaazon/hop.nvim
+
+https://github.com/numToStr/Comment.nvim
+
+https://github.com/iamcco/markdown-preview.nvim
+
+https://github.com/rcarriga/nvim-notify
