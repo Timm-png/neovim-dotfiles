@@ -1,4 +1,4 @@
-# It has full support only Linux and Windows.
+# It has  support only Linux and Windows.
 # Tested Only On Windows
 
 ## Install [package manager](https://github.com/wbthomason/packer.nvim):
@@ -15,53 +15,7 @@ git clone https://github.com/wbthomason/packer.nvim "$env:LOCALAPPDATA\nvim-data
 git clone --depth 1 https://github.com/wbthomason/packer.nvim\
  ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 ```
-
 ---
-## Install [fzf](https://github.com/junegunn/fzf)
-
-**Linux:**
-```sh
-# Ubuntu/Debian
-sudo apt-get install fzf
-
-#Fedora
-sudo dnf install fzf
-
-# Arch Linux
-sudo pacman -S fzf
-
-# OpenSUSE
-sudo zypper install fzf
-```
-
-**MacOS:**
-```sh
-brew install fzf
-```
-
----
-
-## Install gcc and make:
-
-**Linux:**
-```sh
-# Ubuntu/Debian
-sudo apt install build-essential make
-
-# Fedora
-sudo dnf install make gcc
-
-# Arch Linux
-sudo pacman -Ss gcc make
-
-# OpenSUSE
-sudo zypper install gcc make
-```
-
-**MacOS:**
-```sh
-brew install gcc make
-```
 
 ## Install Config:
 
