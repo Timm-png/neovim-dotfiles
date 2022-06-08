@@ -14,31 +14,31 @@ local function keymappings(client, bufnr)
     keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
     keymap("n", "[e", "<cmd>lua vim.diagnostic.goto_prev({severity = vim.diagnostic.severity.ERROR})<CR>", opts)
     keymap("n", "]e", "<cmd>lua vim.diagnostic.goto_next({severity = vim.diagnostic.severity.ERROR})<CR>", opts)
+    keymap("n", "<A-j>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>", opts)
+    keymap("n", "<A-k>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>", opts)
 
     -- Whichkey
     local keymap_l = {
         l = {
             name = "LSP",
-            r = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename" },
-            a = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code Action" },
-            d = { "<cmd>lua vim.diagnostic.open_float()<CR>", "Line Diagnostics" },
-            i = { "<cmd>LspInfo<CR>", "Lsp Info" },
+            R = { "<cmd>Telescope lsp_references<CR>", "References" },
+            -- f = { "<cmd>Lspsaga lsp_finder<CR>", "Finder" },
+            r = { "<cmd>Lspsaga rename<CR>", "Rename" },
+            a = { ":<C-U>Lspsaga range_code_action<CR>", "Code action" },
+            s = { "<cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>", "Signature Help" },
+            p = { "<cmd>lua require'lspsaga.provider'.preview_definition()<CR>", "Preview difinition" },
+            d = { "<cmd>TroubleToggle<CR>", "Diagnostic" },
+            h = { "<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>", "Hover Doc" },
+
+            I = { "<cmd>lua require('telescope.builtin').lsp_implementations()<cr>", "Goto Implementation" },
+            t = { "<cmd>lua require('telescope.builtin').lsp_type_definitions()<cr>", "Goto Type Definition" },
         },
     }
     if client.resolved_capabilities.document_formatting then
-        keymap_l.l.f = { "<cmd>lua vim.lsp.buf.formatting()<CR>", "Format Document" }
+        keymap_l.l.F = { "<cmd>lua vim.lsp.buf.formatting()<CR>", "Format Document" }
     end
 
-    local keymap_g = { 
-        name = "Goto",
-        d = { "<cmd>lua require('telescope.builtin').lsp_definitions()<cr>", "Definitions" },
-        D = { "<Cmd>lua vim.lsp.buf.declaration()<CR>", "Declaration" },
-        s = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature Help" },
-        I = { "<cmd>lua require('telescope.builtin').lsp_implementations()<cr>", "Goto Implementation" },
-        t = { "<cmd>lua require('telescope.builtin').lsp_type_definitions()<cr>", "Goto Type Definition" },
-    }
     whichkey.register(keymap_l, { buffer = bufnr, prefix = "<leader>" })
-    whichkey.register(keymap_g, { buffer = bufnr, prefix = "g" })
 end
 
 function M.setup(client, bufnr)

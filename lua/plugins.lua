@@ -1,9 +1,9 @@
+---@diagnostic disable: missing-parameter
 local M = {}
 
 function M.setup()
     -- Indicate first time installation
     local packer_bootstrap = false
-    local os = require("utils").get_os_name()
 
     -- packer.nvim configuration
     local conf = {
@@ -105,14 +105,42 @@ function M.setup()
         -- LSP
         use {
             "neovim/nvim-lspconfig",
-            wants = { "cmp-nvim-lsp", "nvim-lsp-installer", "lsp_signature.nvim" },
             config = function()
                 require("config.lsp").setup()
             end,
             requires = {
                 "williamboman/nvim-lsp-installer",
-                "ray-x/lsp_signature.nvim",
+                "folke/lua-dev.nvim",
+                "jose-elias-alvarez/nvim-lsp-ts-utils",
             },
+        }
+
+        -- trouble.nvim
+        use {
+            "folke/trouble.nvim",
+            wants = "nvim-web-devicons",
+            cmd = { "TroubleToggle", "Trouble" },
+            config = function()
+                require("trouble").setup {
+                    use_diagnostic_signs = true,
+                    auto_close = true,
+                }
+            end,
+        }
+
+        -- lspsaga.nvim
+        use {
+            "tami5/lspsaga.nvim",
+            config = function()
+                require("config.lsp.lspsaga").setup()
+            end,
+        }
+
+        use {
+            "j-hui/fidget.nvim",
+            config = function()
+                require("config.fidget").setup()
+            end
         }
 
         -- LuaLine
@@ -156,38 +184,27 @@ function M.setup()
             end,
         }
 
-        if os ~= "Windows" then
-            -- fzf-lua
-            use {
-                "ibhagwan/fzf-lua",
-                wants = "nvim-web-devicons",
-                requires = { "junegunn/fzf", run = "./install --all" },
-            }
-        end
-
         -- Telescope
         use {
             "nvim-telescope/telescope.nvim",
             config = function()
                 require("config.telescope").setup()
             end,
-            module = "telescope",
-            keys = { "<leader>f", "<leader>p" },
-            wants = {
-                "plenary.nvim",
-                "popup.nvim",
-                "telescope-project.nvim",
-                "project.nvim",
-            }, requires = {
+            requires = {
                 "nvim-lua/popup.nvim",
                 "nvim-lua/plenary.nvim",
                 "nvim-telescope/telescope-project.nvim",
+                "xiyaowong/telescope-emoji.nvim",
                 {
                     "ahmedkhalf/project.nvim",
                     config = function()
                         require("project_nvim").setup {}
                     end,
                 },
+                {
+                    'nvim-telescope/telescope-fzf-native.nvim',
+                    run = 'make'
+                }
             },
         }
 
@@ -243,12 +260,36 @@ function M.setup()
             end,
         }
 
+        -- Nvim.comment
+        use {
+            "terrortylor/nvim-comment",
+            config = function()
+                require('config.nvim-comment').setup()
+            end
+        }
+
+        -- WinShoft
+        use {
+            "sindrets/winshift.nvim",
+            config = function()
+                require("config.winshift").setup()
+            end
+        }
+    
+        -- todo-comments
+        use {
+            "folke/todo-comments.nvim",
+            config = function()
+                require("todo-comments").setup {}
+            end
+        }
+
         -- Other
         use "powerman/vim-plugin-ruscmd"
+        use 'lewis6991/gitsigns.nvim'
         use "norcalli/nvim-colorizer.lua"
         use "jghauser/mkdir.nvim"
-        use "folke/todo-comments.nvim"
-        use "sindrets/winshift.nvim"
+        use "andymass/vim-matchup"
         use "mhinz/vim-sayonara"
         use "tpope/vim-surround"
         use "nvim-lua/plenary.nvim"
@@ -266,4 +307,5 @@ function M.setup()
     packer.startup(plugins)
 end
 
+---@diagnostic disable-next-line: missing-parameter
 return M

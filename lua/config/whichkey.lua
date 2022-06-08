@@ -42,7 +42,7 @@ function M.setup()
     -- Config dir in differnt os
     if utils.get_os_name() == 'Windows' then
         config_location = { ":e ~/AppData/Local/nvim<cr>", "Edit config" }
-    else
+    elseif utils.get_os_name() == "Linux" then
         config_location = { ":e ~/.config/nvim/<cr>", "Edit config" }
     end
 
@@ -53,6 +53,7 @@ function M.setup()
         c = { ":Sayonara!<cr>", "Close current buffer" },
         E = config_location,
         t = { "<C-t>", "Jumps to back" },
+        m = { "<cmd>MarkdownPreviewToggle<cr>", "Toggle markdown preview" },
         W = {
             name = "WinShift",
             w = { "<Cmd>WinShift<CR>", "Start WinShift Mode" },
@@ -64,13 +65,12 @@ function M.setup()
         f = {
             name = "Telescope",
             f = { "<cmd>lua require('telescope.builtin').find_files()<cr>", "Files" },
-            c = { "<cmd>lua require('telescope.builtin').git_commits()<cr>", "Git Commits" },
-            s = { "<cmd>lua require('telescope.builtin').git_status()<cr>", "Git Status" },
-            t = { "<cmd>lua require('telescope.builtin').treesitter()<cr>", "Treesitter" },
+            t = { "<cmd>lua require('telescope.builtin').live_grep()<cr>", "Text" },
+            s = { "<cmd>lua require('telescope.builtin').treesitter()<cr>", "File sctructure" },
             l = { ":TodoTelescope<cr>", "TODO List" },
             b = { "<cmd>lua require('telescope.builtin').buffers()<cr>", "Buffers" },
-            p = { "<cmd>lua require'telescope'.extensions.project.project{}<cr>", "List" },
-            d = { " <cmd>lua require('telescope.builtin').diagnostics()<cr>", "Diagnostic list" }
+            p = { "<cmd>lua require'telescope'.extensions.project.project{}<cr>", "Projects list" },
+            e = { "<cmd>Telescope emoji<cr>", "Emoji"}
         },
         n = {
             name = "NvimTree",
@@ -78,7 +78,7 @@ function M.setup()
             f = { ":NvimTreeFocus<CR>:NvimTreeRefresh<CR>", "Focus & Refresh" },
         },
         z = {
-            name = "Packer",
+            name = "Plugin manager",
             c = { "<cmd>PackerCompile<cr>", "Compile" },
             i = { "<cmd>PackerInstall<cr>", "Install" },
             s = { "<cmd>PackerSync<cr>", "Sync" },

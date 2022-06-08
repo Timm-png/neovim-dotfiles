@@ -16,7 +16,6 @@ function M.setup()
                 left = "",
                 right = ""
             },
-            -- disabled_filetypes = {"NvimTree", "toggleterm"},
             always_divide_middle = true,
         },
         sections = {
@@ -29,7 +28,7 @@ function M.setup()
                 {
                     gps.get_location,
                     cond = gps.is_available,
-                }
+                },
             },
             lualine_x = {
                 "diagnostics",

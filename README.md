@@ -17,6 +17,57 @@ git clone --depth 1 https://github.com/wbthomason/packer.nvim\
 ```
 ---
 
+## Install [pipgrep](https://github.com/BurntSushi/ripgrep) (requirement for text search)
+
+**Windows:**
+```sh 
+scoop install ripgrep
+```
+
+**Linux:**
+```sh
+# Debian/Ubuntu
+sudo apt-get install ripgre
+
+# Fedora
+sudo dnf install ripgrep
+
+# Arch Linux
+sudo pacman -S ripgrep
+```
+
+**MacOS:**
+```sh
+brew install ripgrep
+```
+
+---
+
+## Install gcc and make (requirement for fzf)
+
+**Windows:**
+```sh 
+scoop install gcc make
+```
+
+**Linux:**
+```sh
+# Debian/Ubuntu
+sudo apt install build-essential
+
+# Fedora
+sudo dnf install gcc make
+
+# Arch Linux
+sudo pacman -S gcc make
+```
+
+**MacOS:**
+```sh
+brew install gcc make
+```
+
+---
 ## Install Config:
 
 **Windows:**
@@ -44,23 +95,11 @@ git clone https://github.com/Timm-png/neovim-dotfiles/ ~/.config/nvim
 
 #### Other plugins I'm lazy to add
 
+https://alpha2phi.medium.com/learn-neovim-the-practical-way-8818fcf4830f
+
+https://github.com/nvim-telescope/telescope.nvim/wiki/Extensions
+
 https://github.com/LunarVim/Neovim-from-scratch
-
-https://github.com/onsails/lspkind.nvim
-
-https://github.com/tami5/lspsaga.nvim
-
-https://github.com/hrsh7th/cmp-git
-
-https://github.com/hrsh7th/nvim-kit
-
-https://github.com/folke/trouble.nvim
-
-https://gitlab.com/yorickpeterse/nvim-window
-
-https://github.com/rstacruz/vim-closer
-
-https://github.com/andymass/vim-matchup
 
 https://github.com/lewis6991/gitsigns.nvim
 
@@ -68,10 +107,12 @@ https://github.com/mfussenegger/nvim-dap
 
 https://github.com/rcarriga/nvim-dap-ui
 
+https://github.com/nvim-telescope/telescope-dap.nvim
+
+https://github.com/nvim-telescope/telescope-project.nvim
+
+https://github.com/AckslD/nvim-neoclip.lua
+
 https://github.com/phaazon/hop.nvim
-
-https://github.com/numToStr/Comment.nvim
-
-https://github.com/iamcco/markdown-preview.nvim
 
 https://github.com/rcarriga/nvim-notify

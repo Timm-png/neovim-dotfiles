@@ -18,6 +18,9 @@ function M.setup()
         endwise = {
             enable = true,
         },
+        matchup = {
+            enable = true,
+        },
     }
 end
 

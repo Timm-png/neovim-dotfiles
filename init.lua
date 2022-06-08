@@ -1,5 +1,3 @@
 require("config")
 require("utils")
 require("plugins").setup()
-require("config.todo-comments")
-require("config.winshift")
